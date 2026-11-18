@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUNDAM ARCHIVE｜全陣營鋼彈規格與武力分析資料庫</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- 頂部導覽與搜尋列 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-badge">MS-DB</div>
+        <div>
+          <h1>GUNDAM FACTION ARCHIVE</h1>
+          <p class="subtitle">全陣營鋼彈實體圖鑑・機體規格・六維武力戰術分析</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="search-box">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="搜尋機體名稱、型號、駕駛員或武裝..."
+            aria-label="搜尋鋼彈"
+          />
+        </div>
+        <select id="eraSelect" aria-label="篩選紀元">
+          <option value="ALL">全部紀元</option>
+          <option value="U.C.">U.C. 宇宙世紀</option>
+          <option value="C.E.">C.E. 宇宙紀元</option>
+          <option value="A.D.">A.D. 西曆紀元</option>
+          <option value="A.C.">A.C. 後殖民紀元</option>
+          <option value="P.D.">P.D. 災後紀元</option>
+          <option value="A.S.">A.S. 星元紀元</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 系統數據摘要列 -->
+    <section class="stats-banner" aria-label="資料庫統計">
+      <div class="stat-pill">
+        <span class="stat-label">收錄機體</span>
+        <strong id="totalCount">0</strong>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">涵蓋陣營</span>
+        <strong id="factionCount">0</strong>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">目前顯示</span>
+        <strong id="visibleCount">0</strong>
+      </div>
+      <div class="stat-pill vs-pill">
+        <span class="stat-label">戰力對比槽</span>
+        <button id="openCompareBtn" class="btn-compare" disabled>
+          已選 <span id="compareCount">0</span>/2 架進行對比
+        </button>
+      </div>
+    </section>
+
+    <!-- 陣營篩選分頁 -->
+    <section class="faction-bar" aria-label="陣營分類">
+      <div id="factionTabs" class="faction-tabs"></div>
+    </section>
+
+    <!-- 機體卡片列表 -->
+    <section class="ms-grid" id="msGrid" aria-live="polite"></section>
+  </main>
+
+  <!-- 機體詳細規格與武力分析彈窗 -->
+  <div id="detailModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close="detail"></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close="detail" aria-label="關閉視窗">&times;</button>
+      <div id="detailContent" class="detail-layout"></div>
+    </div>
+  </div>
+
+  <!-- 雙機戰力對比彈窗 -->
+  <div id="compareModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close="compare"></div>
+    <div class="modal-panel modal-wide">
+      <button class="modal-close" data-close="compare" aria-label="關閉視窗">&times;</button>
+      <h2 class="compare-title">VS 跨陣營機體武力對比分析</h2>
+      <div id="compareContent" class="compare-layout"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>GUNDAM FACTION ARCHIVE｜適用 GitHub Pages 靜態部署｜所有機體圖像均採用 1:1 實體立像與 Gunpla 模型實拍照片</p>
+    </div>
+  </footer>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
